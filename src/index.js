@@ -9,7 +9,7 @@ import { Provider } from 'react-redux';
 
 const addSnack = (state = [], action) => {
     if(action.type === "ADD_SNACK_INFO"){
-        state = [...state, action.payload];
+        return [...state, action.payload];
     }
     return state;
 }
