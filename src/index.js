@@ -4,5 +4,21 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import { createStore, combineReducers } from 'redux';
+import { Provider } from 'react-redux';
+
+const addSnack = (state = [], action) => {
+    if(action.type === "ADD_SNACK_INFO"){
+        state = [...state, action.payload];
+    }
+    return state;
+}
+
+const storeInstance = createStore(
+    combineReducers({
+        addSnack
+    }),
+);
+
+ReactDOM.render(<Provider store={storeInstance}><App /></Provider>, document.getElementById('root'));
 registerServiceWorker();
