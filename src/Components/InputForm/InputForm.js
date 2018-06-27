@@ -1,8 +1,33 @@
 import React, { Component } from 'react';
+import { compose } from 'redux';
+import { withStyles } from '@material-ui/core';
 
 import { connect } from 'react-redux';
 
 import SnackList from '../SnackList/SnackList';
+
+const styles = theme => ({
+    inputs: {
+        margin: 5,
+        width: 150,
+    },
+    submit: {
+        '&:hover':{
+            opacity: 0.5,
+            backgroundColor: 'green',
+        },
+        '&:active':{
+            opacity: 0.5,
+            position: 'relative',
+            top: 2
+        },
+        backgroundColor: 'lightgreen',
+        border: 'none',
+        color: 'white',
+        width: 150,
+        height: 25
+    },
+});
 
 class InputForm extends Component{
     constructor(){
@@ -25,12 +50,13 @@ class InputForm extends Component{
     }
 
     render(){
+        const { classes } = this.props;
         return(
             <div>
                 <form onSubmit={this.handleFormSubmission}>
-                    <input type="text" placeholder="Add a snack" onChange={this.handleSnackInputChange} value={this.state.name}/>
-                    <input type="text" placeholder="Provider of snack" onChange={this.handleProviderInputChange} value={this.state.provider} />
-                    <input type="submit" value="Submit" />
+                    <input className={classes.inputs} type="text" placeholder="Snack" onChange={this.handleSnackInputChange} value={this.state.name}/><br />
+                    <input className={classes.inputs} type="text" placeholder="Provided by..." onChange={this.handleProviderInputChange} value={this.state.provider} /><br />
+                    <input className={`${classes.input} ${classes.submit}`} type="submit" value="Submit" />
                 </form>
                 <SnackList />
             </div>
@@ -38,4 +64,8 @@ class InputForm extends Component{
     }
 }
 
-export default connect()(InputForm);
+export default compose(
+    withStyles(styles, {
+        name: 'InputForm'
+    }),
+    connect())(InputForm);
