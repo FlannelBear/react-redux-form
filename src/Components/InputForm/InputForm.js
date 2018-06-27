@@ -15,6 +15,7 @@ const styles = theme => ({
         '&:hover':{
             opacity: 0.5,
             backgroundColor: 'green',
+            color: 'white'
         },
         '&:active':{
             opacity: 0.5,
@@ -23,7 +24,7 @@ const styles = theme => ({
         },
         backgroundColor: 'lightgreen',
         border: 'none',
-        color: 'white',
+        color: 'black',
         width: 150,
         height: 25
     },
