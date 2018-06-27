@@ -5,7 +5,7 @@ import Typography from '@material-ui/core/Typography/Typography';
 class SnackProvider extends Component{
     render(){
         return(
-            <Typography>Provided by: {this.props.provider}</Typography>
+            <Typography gutterBottom>Provided by: {this.props.provider}</Typography>
         );
     }
 }

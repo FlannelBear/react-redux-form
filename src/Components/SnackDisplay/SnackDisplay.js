@@ -11,7 +11,7 @@ import { withStyles } from '@material-ui/core';
 const styles = theme => ({
     card: {
         maxWidth: 400,
-        backgroundColor: 'antiqueWhite',
+        backgroundColor: 'lightgreen',
         display: 'inline-block',
         margin: 15
     },
