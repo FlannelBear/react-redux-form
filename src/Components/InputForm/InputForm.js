@@ -33,7 +33,7 @@ const styles = theme => ({
 class InputForm extends Component{
     constructor(){
         super();
-        this.state = {name: '', provider: '', id: 0}
+        this.state = {name: '', provider: '', id: 0, image: ''}
     }
 
     handleSnackInputChange = (event) => {
@@ -44,10 +44,14 @@ class InputForm extends Component{
         this.setState({provider: event.target.value});
     }
 
+    handleImageUrlInputChange = (event) => {
+        this.setState({image: event.target.value});
+    }
+
     handleFormSubmission = (event) => {
         event.preventDefault();
         this.props.dispatch({type: 'ADD_SNACK_INFO', payload: this.state});
-        this.setState({name: '', provider: '', id: this.state.id + 1});
+        this.setState({name: '', provider: '', id: this.state.id + 1, image: ''});
     }
 
     render(){
@@ -57,6 +61,7 @@ class InputForm extends Component{
                 <form onSubmit={this.handleFormSubmission}>
                     <input className={classes.inputs} type="text" placeholder="Snack" onChange={this.handleSnackInputChange} value={this.state.name}/><br />
                     <input className={classes.inputs} type="text" placeholder="Provided by..." onChange={this.handleProviderInputChange} value={this.state.provider} /><br />
+                    <input className={classes.inputs} type="text" placeholder="Image url" onChange={this.handleImageUrlInputChange} value={this.state.image} /><br />
                     <input className={`${classes.input} ${classes.submit}`} type="submit" value="Submit" />
                 </form>
                 <SnackList />
