@@ -7,16 +7,27 @@ import registerServiceWorker from './registerServiceWorker';
 import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 
-const addSnack = (state = [], action) => {
+const manageSnacks = (state = [], action) => {
     if(action.type === "ADD_SNACK_INFO"){
         return [...state, action.payload];
+    }
+    else if(action.type === "EAT_A_SNACK"){
+        console.log('Eating');
+        for(let i = 0; i < state.length; i++){
+            if(state[i].id === action.payload){
+                state.splice(i, 1);
+                
+            }
+        }
+        console.log(state);
+        return [...state];
     }
     return state;
 }
 
 const storeInstance = createStore(
     combineReducers({
-        addSnack
+        manageSnacks
     }),
 );
 

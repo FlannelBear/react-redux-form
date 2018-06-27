@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 
 import SnackDisplay from '../SnackDisplay/SnackDisplay';
 
-const mapReduxStateToProps = (  {addSnack}  ) => ({
-    addSnack
+const mapReduxStateToProps = (  {manageSnacks}  ) => ({
+    manageSnacks
 });
 
 class SnackList extends Component{
@@ -14,7 +14,7 @@ class SnackList extends Component{
             <div>
                 <h2>Snack Overflow</h2>
                 <div>
-                    {this.props.addSnack.map(snack => <SnackDisplay snack={snack}/>)}
+                    {this.props.manageSnacks.map(snack => <SnackDisplay key={snack.id} snack={snack}/>)}
                 </div>
             </div>
         );

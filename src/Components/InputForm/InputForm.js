@@ -7,7 +7,7 @@ import SnackList from '../SnackList/SnackList';
 class InputForm extends Component{
     constructor(){
         super();
-        this.state = {name: '', provider: ''}
+        this.state = {name: '', provider: '', id: 0}
     }
 
     handleSnackInputChange = (event) => {
@@ -21,7 +21,7 @@ class InputForm extends Component{
     handleFormSubmission = (event) => {
         event.preventDefault();
         this.props.dispatch({type: 'ADD_SNACK_INFO', payload: this.state});
-        this.setState({name: '', provider: ''});
+        this.setState({name: '', provider: '', id: this.state.id + 1});
     }
 
     render(){
