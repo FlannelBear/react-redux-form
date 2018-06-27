@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 
+import Typography from '@material-ui/core/Typography/Typography';
+
 class SnackItem extends Component{
     render(){
         return(
-            <p>Snack: {this.props.snack}</p>
+            <Typography>{this.props.snack}</Typography>
         );
     }
 }
